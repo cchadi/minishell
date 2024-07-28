@@ -6,11 +6,11 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:36:58 by achakour          #+#    #+#             */
-/*   Updated: 2024/07/23 16:43:51 by achakour         ###   ########.fr       */
+/*   Updated: 2024/07/28 10:10:41 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parsing.h"
 
 void    get_meta_chars(char *str, int *index, t_a9aw9o3 **shell)
 {
@@ -123,7 +123,8 @@ void zre3_btata_dk_lflah(char *str)
     }
     process_red(tokens);
     sanitize_tokens(tokens);
-    remove_quotes(tokens);
+    expander(tokens);
+    // remove_quotes(tokens);
     t_shell *lst = fill_struct(&tokens);
     printf("cmd %s\n", lst->cmd);
     printf("out %d\n", lst->out);
@@ -143,7 +144,12 @@ void zre3_btata_dk_lflah(char *str)
 int main(int ac, char **ar)
 {
     char *input = readline("minishell $:");
-    process_cmd(input);
+    zre3_btata_dk_lflah(input);
+    // int fd = open("out", O_RDWR|O_CREAT);
+    // printf("%d\n", fd);
+    // // close(fd);
+    // fd = open("out", O_RDWR);
+    // printf("%d\n", fd);
     // write(5,"hello",6);
     // read_history(input);
     return (0);
